@@ -22,3 +22,7 @@
     background-color: aqua;
 }
 
+.optionHidden {
+    transform: translateX(-50vw);
+    transition: transform 1s ease-in;
+}
