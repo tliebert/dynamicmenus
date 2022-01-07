@@ -1,8 +1,22 @@
-li {
-    color: blue;
+
+* {
+    font-size: 50px;
 }
 
 #menucontainer {
     border: 1px solid tomato;
+    display: inline-block;
 }
+
+.option {
+    border: 1px solid green;
+    display: inline-block;
+}
+
+#optionsButton {
+    border: 1px solid blue;
+    display: inline-block;
+}
+
+
 
