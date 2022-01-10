@@ -8,9 +8,19 @@
     display: inline-block;
 }
 
+
 .option {
     border: 1px solid green;
     display: inline-block;
+    /* transition: transform 200ms ease-in; */
+}
+
+.optionHidden {
+    transform: translateX(-50vw);
+}
+
+.transitioning {
+    
 }
 
 #optionsButton {
@@ -22,7 +32,3 @@
     background-color: aqua;
 }
 
-.optionHidden {
-    transform: translateX(-50vw);
-    transition: transform 1s ease-in;
-}
