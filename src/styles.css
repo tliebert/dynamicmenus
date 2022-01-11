@@ -19,8 +19,8 @@
     transform: translateX(-50vw);
 }
 
-.transitioning {
-    
+.transition {
+    transition: transform 1s ease-in
 }
 
 #optionsButton {
