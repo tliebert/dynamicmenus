@@ -1,53 +1,59 @@
 import './styles.css';
-import OPTIONS from "./option.js"
+import menuOptions from "./option.js"
 
-function addPositionToChildren (container) {
+function menuify(menuContainer, buttonID, optionsObject) {
 
-    function returnArrayOfChildren(parentEl) {
-        return Array.from(parentEl.children)
-    }
+    const optionsObjectButton = document.querySelector(`#${buttonID}`)
+    optionsObjectButton.addEventListener("click", toggleMenuItems)
 
-    let arrayChildren = returnArrayOfChildren(container)
+    addPositionToChildren(menuContainer)
+
+    function addPositionToChildren (container) {
+
+        function returnArrayOfChildren(parentEl) {
+            return Array.from(parentEl.children)
+        }
     
-    function addInitialClasses(element, index) {
-        // console.log(typeof element, element);
-        element.setAttribute("data-position", index)
-        OPTIONS.getInitialClasses().forEach(initClass => {
-            element.classList.add(`${initClass}`)
+        let arrayChildren = returnArrayOfChildren(container)
+        
+        function addInitialClasses(element, index) {
+            // console.log(typeof element, element);
+            element.setAttribute("data-position", index)
+            optionsObject.getInitialClasses().forEach(initClass => {
+                element.classList.add(`${initClass}`)
+            })
+        }
+        
+        function addDataAttributes(arr) {
+            arr.forEach(addInitialClasses);
+        }
+    
+        addDataAttributes(arrayChildren)
+    
+    }
+    
+    function addVariableTransitionDelay(node, indexInList) {
+        node.style.transitionDelay = `${indexInList}s`
+    }
+    
+    function toggleMenuItems(event) {
+        event.target.classList.toggle(`${optionsObject.buttonTransitionClass}`)
+        let nodes = menuContainer.querySelectorAll(`.${optionsObject.mainOptionClass}`);
+        nodes.forEach(node => {
+            let index = node.getAttribute("data-position")
+            addVariableTransitionDelay(node, index)
+            node.classList.toggle(`${optionsObject.hiddenOptionClass}`)
+            node.classList.add(`${optionsObject.transitionStyleClass}`)
         })
     }
-    
-    function addDataAttributes(arr) {
-        arr.forEach(addInitialClasses);
-    }
-
-    addDataAttributes(arrayChildren)
-
 }
 
-function addVariableTransitionDelay(node, indexInList) {
-    node.style.transitionDelay = `${indexInList}s`
-}
+let firstContainer = document.querySelector("#menucontainer")
+let buttonID = "optionsButton"
 
-function toggleMenuItems(event) {
-    let nodes = document.querySelectorAll(`.${OPTIONS.mainOptionClass}`);
-    nodes.forEach(node => {
-        let index = node.getAttribute("data-position")
-        addVariableTransitionDelay(node, index)
-        node.classList.toggle(`${OPTIONS.hiddenOptionClass}`)
-        node.classList.add(`${OPTIONS.transitionStyleClass}`)
-    })
-}
+menuify(firstContainer, buttonID, menuOptions)
 
-const optionsButton = document.querySelector(`#${OPTIONS.buttonID}`)
-optionsButton.addEventListener("click", toggleMenuItems)
+let secondContainer = document.querySelector("#secondContainer")
+let buttonID2 = "secondButton"
 
-let listcontainer = document.querySelector("#menucontainer")
-addPositionToChildren(listcontainer)
-
-const secondButton = document.querySelector("#secondButton")
-secondButton.addEventListener("click", toggleMenuItems)
-
-let secondContainer = document.querySelector("#secondContainer");
-addPositionToChildren(secondContainer)
-
+menuify(secondContainer, buttonID2, menuOptions)

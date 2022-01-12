@@ -12,7 +12,6 @@
 .option {
     border: 1px solid green;
     display: inline-block;
-    /* transition: transform 200ms ease-in; */
 }
 
 .optionHidden {
@@ -24,11 +23,50 @@
 }
 
 #optionsButton {
+    /* display: inline-block; */
     border: 1px solid cyan;
-    display: inline-block;
 }
 
 .testDiv {
     background-color: aqua;
 }
 
+.questionContainer {
+    display: flex; 
+}
+
+.showHideOptions {
+    color: red;
+    width: 200px;
+    transition: .5s;
+}
+
+.showHideOptionsTransition {
+    transition: .5s;
+    /* color: white;
+    background-color: white; */
+    width: 70px;
+}
+
+.showHideOptionsTransition::before {
+    transition: .5s;
+    top: 35px;
+    transform: rotate(45deg)
+}
+
+.showHideOptionsTransition::after {
+    transition: .5s;
+    top: 35px;
+    transform: rotate(135deg)
+}
+
+.showHideOptionsTransition::after,
+.showHideOptionsTransition::before {
+    transition: .5s;
+    position: absolute;
+    display: inline-block;
+    width: 70px;
+    height: 7px;
+    background-color: red;
+    content: "";
+}
