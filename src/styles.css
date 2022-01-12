@@ -4,42 +4,41 @@
     --background-color: white;
 }
 
-#menucontainer {
-    border: 1px solid tomato;
-    display: inline-block;
-}
-
-
 .option {
-    border: 1px solid green;
     display: inline-block;
 }
 
 .optionHidden {
     transform: translateX(-50vw);
+    transition: ease-out;
+    color: var(--background-color);
 }
 
 .transition {
-    transition: transform 1s ease-in
+    transition: transform 1s cubic-bezier(.02,.28,.12,1.48)
 }
 
-#optionsButton {
-    /* display: inline-block; */
-    border: 1px solid cyan;
+.questionContainer {
+    position: relative;
+    display: flex;
 }
 
 .testDiv {
     background-color: aqua;
 }
 
-.questionContainer {
+.optionsContainer {
     display: flex; 
+    position: relative;
+    display: inline-block;
 }
 
 .showHideOptions {
     color: red;
     width: auto;
     transition: .5s;
+    border: none;
+    background-color: var(--background-color);
 }
 
 .showHideOptionsTransition {
@@ -47,6 +46,7 @@
     color: white;
     background-color: white;
     width: 70px;
+    font-size: 0px;
 }
 
 .showHideOptions::after,
@@ -62,19 +62,22 @@
 
 .showHideOptionsTransition::before {
     transition: .5s;
-    top: 35px;
     transform: rotate(45deg);
     background-color: red;
 }
 
 .showHideOptionsTransition::after {
     transition: .5s;
-    top: 35px;
-    left: 2px;
     transform: rotate(135deg);
     background-color: red;
 }
 
 .showHideOptions::after {
-    left: 7px;
+    left: 0px;
+    top: 0px;
+}
+
+.showHideOptionsTransition::after, 
+.showHideOptionsTransition::before {
+    top: 26px;
 }

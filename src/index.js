@@ -33,7 +33,7 @@ function menuify(menuContainer, buttonID, optionsObject) {
     }
     
     function addVariableTransitionDelay(node, indexInList) {
-        node.style.transitionDelay = `${indexInList}s`
+        node.style.transitionDelay = `.${indexInList}s`
     }
     
     function toggleMenuItems(event) {
