@@ -1,6 +1,7 @@
 
 * {
     font-size: 50px;
+    --background-color: white;
 }
 
 #menucontainer {
@@ -37,36 +38,43 @@
 
 .showHideOptions {
     color: red;
-    width: 200px;
+    width: auto;
     transition: .5s;
 }
 
 .showHideOptionsTransition {
     transition: .5s;
-    /* color: white;
-    background-color: white; */
+    color: white;
+    background-color: white;
     width: 70px;
+}
+
+.showHideOptions::after,
+.showHideOptions::before {
+    transition: .5s;
+    position: absolute;
+    /* display: inline-block; */
+    width: 70px;
+    height: 7px;
+    content: "";
+    background-color: var(--background-color);
 }
 
 .showHideOptionsTransition::before {
     transition: .5s;
     top: 35px;
-    transform: rotate(45deg)
+    transform: rotate(45deg);
+    background-color: red;
 }
 
 .showHideOptionsTransition::after {
     transition: .5s;
     top: 35px;
-    transform: rotate(135deg)
+    left: 2px;
+    transform: rotate(135deg);
+    background-color: red;
 }
 
-.showHideOptionsTransition::after,
-.showHideOptionsTransition::before {
-    transition: .5s;
-    position: absolute;
-    display: inline-block;
-    width: 70px;
-    height: 7px;
-    background-color: red;
-    content: "";
+.showHideOptions::after {
+    left: 7px;
 }
