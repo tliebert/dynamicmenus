@@ -57,3 +57,39 @@ let secondContainer = document.querySelector("#secondContainer")
 let buttonID2 = "secondButton"
 
 menuify(secondContainer, buttonID2, menuOptions)
+
+
+function makeWholeMenu(menuName, arrayOfOptions, optionsObj, parentContainer) {
+
+    let parent = document.createElement("div")
+    parent.classList.add(optionsObj.largestContainerClass)
+
+    let container = document.createElement("div");
+    container.classList.add(optionsObj.optionsContainer);
+
+    let button = document.createElement("div");
+    button.setAttribute("id", menuName)
+    button.classList.add(optionsObj.mainButtonClass)
+    button.textContent = menuName;
+
+    parent.appendChild(button)
+    parent.appendChild(container)
+    parentContainer.insertBefore(parent, parentContainer.firstChild)
+
+    arrayOfOptions.forEach(option => {
+        let item = document.createElement("div")
+        item.textContent = option;
+        container.appendChild(item);
+    })
+
+    console.log(button, container, menuName, optionsObj)
+
+    menuify(container, menuName, optionsObj)
+
+}
+
+let testArray = ["One ", "two ", "things "];
+
+let docbody = document.querySelector("body")
+
+makeWholeMenu("program", testArray, menuOptions, docbody)

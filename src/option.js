@@ -10,6 +10,9 @@ const options = {
     hiddenOptionClass: "optionHidden",
     transitionStyleClass: "transition", 
     buttonTransitionClass: "showHideOptionsTransition",
+    mainButtonClass: "showHideOptions",
+    largestContainerClass: "questionContainer",
+    optionsContainer: "optionsContainer",
     getInitialClasses: function() {
         return [this.mainOptionClass, this.hiddenOptionClass]
     }
