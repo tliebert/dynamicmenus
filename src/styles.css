@@ -14,6 +14,10 @@
     color: var(--background-color);
 }
 
+li {
+    color: green;
+}
+
 .transition {
     transition: transform 1s cubic-bezier(.02,.28,.12,1.48)
 }
